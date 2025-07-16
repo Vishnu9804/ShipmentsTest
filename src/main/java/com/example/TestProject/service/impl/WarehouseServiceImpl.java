@@ -6,6 +6,8 @@ import com.example.TestProject.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,10 +28,17 @@ public class WarehouseServiceImpl implements WarehouseService {
         {
             System.out.println("Parent location code is notnull");
             Optional<Warehouse> warehouseOptional = warehouseRepository.findById(parentLocationCode);
+            System.out.println(warehouseOptional.isPresent());
             if(warehouseOptional.isPresent())
             {
+
                 warehouseRepository.save(warehouse);
             }
         }
+    }
+    @Override
+
+    public Warehouse getWarehouse(String warehouse_code) {
+        return warehouseRepository.findById(warehouse_code).orElse(null);
     }
 }

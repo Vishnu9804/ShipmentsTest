@@ -4,4 +4,5 @@ import com.example.TestProject.entity.Warehouse;
 
 public interface WarehouseService {
     public void CreateWarehouse(Warehouse warehouse);
+    public Warehouse getWarehouse(String warehouseCode);
 }

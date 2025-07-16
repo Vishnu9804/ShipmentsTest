@@ -5,10 +5,7 @@ import com.example.TestProject.service.WarehouseService;
 import com.example.TestProject.service.impl.WarehouseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -23,5 +20,12 @@ public class WarehouseController {
         System.out.println(warehouse);
         warehouseService.CreateWarehouse(warehouse);
         return ResponseEntity.ok(warehouse);
+    }
+
+
+    @GetMapping("/warehouse/tree")
+    public ResponseEntity<Warehouse> getWarehouses(@RequestParam String warehouse_code) {
+        System.out.println(warehouse_code);
+        return ResponseEntity.ok(warehouseService.getWarehouse(warehouse_code));
     }
 }
